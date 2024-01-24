@@ -30,7 +30,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b) //Definir os targets 
 
 void	init_nodes_b(t_stack_node *a, t_stack_node *b) //Define a function that prepares the nodes for pushing `b` to `a`
 {
-	current_index(a);
-	current_index(b);
+	set_position(a);
+	set_position(b);
 	set_target_b(a, b);
 }
