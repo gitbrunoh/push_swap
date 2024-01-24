@@ -12,9 +12,9 @@ typedef struct s_stack_node
 	int				cost;
 	bool			over_median;
 	bool			cheapest;
-	struct s_stack_box	*next;
-	struct s_stack_box	*previous;
-	struct s_stack_box	*target;
+	struct s_stack_node	*next;
+	struct s_stack_node	*previous;
+	struct s_stack_node	*target;
 }					t_stack_node;
 
 //***Handle errors
