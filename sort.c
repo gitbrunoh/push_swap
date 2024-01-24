@@ -12,8 +12,8 @@ static void rotate_both(t_stack_node **a,
             rr(a, b, false); // Rotate both `a` and `b` nodes
         }
     }
-    current_index(*a); // Refresh current node positions
-    current_index(*b);
+    set_position(*a); // Refresh current node positions
+    set_position(*b);
 }
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b) //Define a function that prepares the cheapest nodes on top of the stacks for pushing `a` nodes to stack `b`, until there are three nodes left in `a`
@@ -68,6 +68,6 @@ void	sort(t_stack_node **a, t_stack_node **b) //Define a function that sorts sta
 		init_nodes_b(*a, *b); //Initiate all nodes from both stacks
 		move_b_to_a(a, b); //Move all `b` nodes back to a sorted stack `a`
 	}
-	current_index(*a); //Refresh the current position of stack `a`
+	set_position(*a); //Refresh the current position of stack `a`
 	min_on_top(a); //Ensure smallest number is on top
 }

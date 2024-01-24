@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	init_stack_a(&stack_a, argv + 1); //Verificar erros de entrada e criar o stack 'a' com os numeros
+	init_stack_a(&stack_a, argv + 1);
 	if (!stack_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)

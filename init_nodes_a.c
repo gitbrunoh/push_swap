@@ -1,27 +1,27 @@
 #include "push_swap.h"
 
-void	current_index(t_stack_node *stack)
+void	set_position(t_stack_node *stack)
 {
-	int	i; //To store the index of the current node
-	int	median; //To store the position of the median of the stack
+	int	i;
+	int	median;
 
-	i = 0; //The first index is `0`
-	if (!stack) //Check for am empty stack
+	i = 0;
+	if (!stack)
 		return ;
-	median = stack_len(stack) / 2; //Calculate the median by dividing the length of a stack by 2
-	while (stack) //Loop through all the nodes until the end of the stack is reached
+	median = stack_len(stack) / 2;
+	while (stack)
 	{
-		stack->position = i; //Assign the current index value to the current node
-		if (i <= median) //Check whether the current node is above or below the median
-			stack->over_median = true; //If above, set the above_median data of the node to true
+		stack->position = i;
+		if (i <= median)
+			stack->over_median = true;
 		else
-			stack->over_median = false; //If below, set the above_median data of the node to false
-		stack = stack->next; //Move to the next node for indexing
-		++i; //Increment the index value to set the next node with
+			stack->over_median = false;
+		stack = stack->next;
+		++i;
 	}
 }
 
-static void	set_target_a(t_stack_node *a, t_stack_node *b)//Find `a` node's target in stack `b`
+static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b; //To store the pointer to the current node in stack `b` and iterate through each node following
 	t_stack_node	*target_node; //To store the pointer to the target node in stack `b`
@@ -91,8 +91,8 @@ void	set_cheapest(t_stack_node *stack) //Define a function that sets a node's `c
 
 void	init_nodes_a(t_stack_node *a, t_stack_node *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
 {
-	current_index(a);
-	current_index(b);
+	set_position(a);
+	set_position(b);
 	set_target_a(a, b);
 	cost_analysis_a(a, b);
 	set_cheapest(a);
