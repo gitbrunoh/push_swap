@@ -11,7 +11,7 @@ static void	rev_rotate(t_stack_node **stack) //Define a funtion that rotates a s
 	last->next = *stack; //Assign to its own `next` attribute as the top node of the stack
 	last->previous = NULL; //Detach itself from the node before it
 	*stack = last;  //Complete appending itself to the top of the stack, and now holds the pointer to the top node
-	last->next->prev = last; //Update the current last node of the stack
+	last->next->previous = last; //Update the current last node of the stack
 }
 
 void	rra(t_stack_node **a, bool print) //Rotate the bottom of `a` to the top of the stack and print the instruction
