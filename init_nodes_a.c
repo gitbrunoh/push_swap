@@ -61,10 +61,10 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b) //Define a functio
 		a->cost = a->position; //Assign the current `a` node's push cost, its' index value
 		if (!(a->over_median)) //Check if the above_median data is false, meaning it is below median
 			a->cost = len_a - (a->position); //If so, update `a` node's push cost to the stack's length - index
-		if (a->target->above_median) //Check if `a` node's target node `b` has a "true" above median attribute, meaning the target `b` node is above median
-			a->cost += a->target->index; //If so, update `a` node's push cost, the sum of (its current index) + (its target `b` node's index)
+		if (a->target->over_median) //Check if `a` node's target node `b` has a "true" above median attribute, meaning the target `b` node is above median
+			a->cost += a->target->position; //If so, update `a` node's push cost, the sum of (its current index) + (its target `b` node's index)
 		else //If `a` node is indeed above median and its target `b` node is below median
-			a->cost += len_b - (a->target->index); //Update `a` node's push cost, the sum of (its current index) + (`b` stack's length - its target `b` node's index)
+			a->cost += len_b - (a->target->position); //Update `a` node's push cost, the sum of (its current index) + (`b` stack's length - its target `b` node's index)
 		a = a->next; //Move to the next `a` node for its cost analysis
 	}
 }
