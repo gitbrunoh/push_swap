@@ -56,7 +56,7 @@ void			rrr(t_stack_node **a, t_stack_node **b, bool write_flag);
 void			pa(t_stack_node **a, t_stack_node **b, bool write_flag);
 void			pb(t_stack_node **b, t_stack_node **a, bool write_flag);
 //Sorting
-void			tiny_sort(t_stack_node **a);
-void			sort(t_stack_node **a, t_stack_node **b);
+void	tiny_sort(t_stack_node **a);
+void	sort(t_stack_node **a, t_stack_node **b);
 
 #endif
