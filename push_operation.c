@@ -19,7 +19,7 @@ static void	push(t_stack_node **dst, t_stack_node **src) //Define a function tha
 	else //If the other stack we want to push to is not empty
 	{
 		push_node->next = *dst; //Assign the node to push, to the top of the current top node of the stack
-		push_node->next->prev = push_node; //Assign to the "second node" `prev` attribute, the pushed node as the current top node
+		push_node->next->previous = push_node; //Assign to the "second node" `prev` attribute, the pushed node as the current top node
 		*dst = push_node; //Complete appending the node. The pointer to the top node of the stack is now pointing to our recently pushed node
 	}
 }
