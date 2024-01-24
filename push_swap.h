@@ -43,21 +43,20 @@ bool			stack_sorted(t_stack_node *stack); //To check whether a stack is sorted
 t_stack_node	*find_min(t_stack_node *stack); //Find the smallest number
 t_stack_node	*find_max(t_stack_node *stack); //Find the biggest number
 
-//***Commands
-void			sa(t_stack_node **a, bool print);
-void			sb(t_stack_node **b, bool print);
-void			ss(t_stack_node **a, t_stack_node **b, bool print);
-void			ra(t_stack_node **a, bool print);
-void			rb(t_stack_node **b, bool print);
-void			rr(t_stack_node **a, t_stack_node **b, bool print);
-void			rra(t_stack_node **a, bool print);
-void			rrb(t_stack_node **b, bool print);
-void			rrr(t_stack_node **a, t_stack_node **b, bool print);
-void			pa(t_stack_node **a, t_stack_node **b, bool print);
-void			pb(t_stack_node **b, t_stack_node **a, bool print);
-
-//***Algorithm
-void			sort_three(t_stack_node **a);
-void			sort_stacks(t_stack_node **a, t_stack_node **b); //Turk algorithm
+//Operations (subject)
+void			sa(t_stack_node **a, bool write_flag);
+void			sb(t_stack_node **b, bool write_flag);
+void			ss(t_stack_node **a, t_stack_node **b, bool write_flag);
+void			ra(t_stack_node **a, bool write_flag);
+void			rb(t_stack_node **b, bool write_flag);
+void			rr(t_stack_node **a, t_stack_node **b, bool write_flag);
+void			rra(t_stack_node **a, bool write_flag);
+void			rrb(t_stack_node **b, bool write_flag);
+void			rrr(t_stack_node **a, t_stack_node **b, bool write_flag);
+void			pa(t_stack_node **a, t_stack_node **b, bool write_flag);
+void			pb(t_stack_node **b, t_stack_node **a, bool write_flag);
+//Sorting
+void			tiny_sort(t_stack_node **a);
+void			sort(t_stack_node **a, t_stack_node **b);
 
 #endif

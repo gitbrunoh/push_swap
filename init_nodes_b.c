@@ -1,16 +1,16 @@
 #include "push_swap.h"
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b) //Define a function that sets for the current `a` node, its target node from stack `a`
+static void	set_target_b(t_stack_node *a, t_stack_node *b) //Definir os targets para os nós do stack `b`
 {
-	t_stack_node	*current_a; //To store the pointer to the current `a` node
-	t_stack_node	*target_node; //To store the pointer of the target node for `b` node
-	long			best_match_index; //To store the "closest bigger" number so far
+	t_stack_node	*current_a;
+	t_stack_node	*target_node;
+	long			best_match_index;
 
 	while (b)
 	{
-		best_match_index = LONG_MAX; //Set the current best match to the max long
-		current_a = a; //Assign the pointer to point to the current `a` node
-		while (current_a) //While the pointer is not set to NULL
+		best_match_index = LONG_MAX;
+		current_a = a;
+		while (current_a)
 		{
 			if (current_a->n > b->n 
 				&& current_a->n < best_match_index) //Check if the `a` node's value is bigger than `b` node, && smaller than the "closest bigger" so far

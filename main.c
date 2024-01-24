@@ -11,15 +11,15 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	init_stack_a(&stack_a, argv + 1); //Verificar erros de entrada e criar o stack a com os numeros
+	init_stack_a(&stack_a, argv + 1); //Verificar erros de entrada e criar o stack 'a' com os numeros
 	if (!stack_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)
 			sa(&stack_a, false);
 		else if (stack_len(stack_a) == 3)
-			sort_three(&stack_a);
+			tiny_sort(&stack_a);
 		else
-			sort_stacks(&stack_a, &stack_b);
+			sort(&stack_a, &stack_b);
 	}
 	free_stack(&stack_a);
 	return (0);

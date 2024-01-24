@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_stack_node	*get_cheapest(t_stack_node *stack) //Define a function that searches for the cheapest node, that is set by bool
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -15,18 +15,18 @@ t_stack_node	*get_cheapest(t_stack_node *stack) //Define a function that searche
 
 void	prep_for_push(t_stack_node **stack,
 						t_stack_node *top_node,
-						char stack_name) //Define a function that moves the required node to the top of the stack
+						char stack_name) 
 {
-	while (*stack != top_node) //Check if the required node is not already the first node
+	while (*stack != top_node) //O nó que eu quero meter no topo já lá está?
 	{
-		if (stack_name == 'a') //If not, and it is stack `a`, execute the following
+		if (stack_name == 'a') //Se não, e for o stack `a`:
 		{
 			if (top_node->over_median)
 				ra(stack, false);
 			else
 				rra(stack, false);
 		}
-		else if (stack_name == 'b') //If not, and it is stack `b`, execute the following
+		else if (stack_name == 'b') //Se não, e for o stack `b`:
 		{
 			if (top_node->over_median)
 				rb(stack, false);

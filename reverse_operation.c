@@ -14,24 +14,24 @@ static void	rev_rotate(t_stack_node **stack) //Define a funtion that rotates a s
 	last->next->previous = last; //Update the current last node of the stack
 }
 
-void	rra(t_stack_node **a, bool print) //Rotate the bottom of `a` to the top of the stack and print the instruction
+void	rra(t_stack_node **a, bool write_flag) //Rotate the bottom of `a` to the top of the stack and print the instruction
 {
 	rev_rotate(a);
-	if (!print)
+	if (!write_flag)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack_node **b, bool print) //Rotate the bottom of `b` to the top of the stack and print the instruction
+void	rrb(t_stack_node **b, bool write_flag) //Rotate the bottom of `b` to the top of the stack and print the instruction
 {
 	rev_rotate(b);
-	if (!print)
+	if (!write_flag)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, bool print) //Stimultaneously rotate both stacks' bottom nodes to the top of their stacks, halving the cost of instructions
+void	rrr(t_stack_node **a, t_stack_node **b, bool write_flag) //Stimultaneously rotate both stacks' bottom nodes to the top of their stacks, halving the cost of instructions
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	if (!print)
+	if (!write_flag)
 		write(1, "rrr\n", 4);
 }

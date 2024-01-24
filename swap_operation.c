@@ -13,24 +13,24 @@ static void	swap(t_stack_node **head) //Define a function that swaps the positio
 	(*head)->previous = NULL; //Sets the `prev` pointer of the `new head` to `NULL` completing the swap
 }
 
-void	sa(t_stack_node	**a, bool print) //Swap the first two nodes of stack `a` and print the instruction
+void	sa(t_stack_node	**a, bool write_flag) //Swap the first two nodes of stack `a` and print the instruction
 {
 	swap(a);
-	if (!print)
+	if (!write_flag)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack_node **b, bool print) //Swap the first two nodes of stack `b` and print the instruction
+void	sb(t_stack_node **b, bool write_flag) //Swap the first two nodes of stack `b` and print the instruction
 {
 	swap(b);
-	if (!print)
+	if (!write_flag)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool print) //Stimutaneously swap the first two nodes of the stack and print the instruction
+void	ss(t_stack_node **a, t_stack_node **b, bool write_flag) //Stimutaneously swap the first two nodes of the stack and print the instruction
 {
 	swap(a);
 	swap(b);
-	if (!print)
+	if (!write_flag)
 		write(1, "ss\n", 3);
 }
