@@ -30,7 +30,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b) //Define a function 
 	if (cheapest_node->over_median && cheapest_node->target->over_median) //If both the cheapest `a` node and its target `b` node are above the median
 		rotate_both(a, b, cheapest_node);
 	else if (!(cheapest_node->over_median) 
-		&& !(cheapest_node->target->above_median)) //If both the cheapest `a` node and its target `b` node are below the median
+		&& !(cheapest_node->target->over_median)) //If both the cheapest `a` node and its target `b` node are below the median
 		rev_rotate_both(a, b, cheapest_node); //`rev_rotate_both` will execute if neither nodes are at the top
 	prep_for_push(a, cheapest_node, 'a'); //Ensure the cheapest nodes is at the top, ready for pushing
 	prep_for_push(b, cheapest_node->target, 'b'); //Ensure the target node is at the top, ready for pushing
