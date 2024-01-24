@@ -3,9 +3,9 @@
 
 # include <limits.h>
 # include <stdbool.h>
-# include "libft/libft.h"
+# include <stdlib.h>
 
-typedef struct s_stack_box
+typedef struct s_stack_node
 {
 	int				n;
 	int				position;
@@ -15,7 +15,7 @@ typedef struct s_stack_box
 	struct s_stack_box	*next;
 	struct s_stack_box	*previous;
 	struct s_stack_box	*target;
-}					t_stack_box;
+}					t_stack_node;
 
 //***Handle errors
 int				error_syntax(char *str_n); 
