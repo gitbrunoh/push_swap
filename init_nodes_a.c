@@ -4,11 +4,16 @@ void	set_position(t_stack_node *stack)
 {
 	int	i;
 	int	median;
+	int	len;
 
 	i = 0;
 	if (!stack)
 		return ;
-	median = lenght_of_stack(stack) / 2;
+	len = lenght_of_stack(stack);
+	if (len % 2 != 0)
+		median = len / 2 + 1;
+	else
+		median = len / 2;
 	while (stack)
 	{
 		stack->position = i;
