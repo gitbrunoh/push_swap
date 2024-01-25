@@ -56,6 +56,29 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 
 static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 {
+	int len_a;
+	int len_b;
+	int	p;
+	int	pt;
+
+	len_a = lenght_of_stack(a);
+	len_b = lenght_of_stack(b);
+	while (a)
+	{
+		p = a->position;
+		pt = a->target->position;
+		if (a->target->over_median && a->over_median)
+			a->cost = max(pt,p);
+		else if (!(a->target->over_median) && !(a->over_median)) 
+			a->cost = max(len_b - pt, len_a - p);
+		else
+			a->cost = min(p, (len_a - p)) + min(pt, (len_b - pt));
+		a = a->next;
+	}
+}
+
+ /*static void	set_cost_a(t_stack_node *a, t_stack_node *b)
+{
 	int	len_a;
 	int	len_b;
 
@@ -72,7 +95,7 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 			a->cost += len_b - (a->target->position);
 		a = a->next;
 	}
-}
+}*/
 
 void	set_cheapest(t_stack_node *stack)
 {
