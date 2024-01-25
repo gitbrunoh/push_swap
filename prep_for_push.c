@@ -15,7 +15,7 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 
 void	prep_for_push(t_stack_node **stack,
 						t_stack_node *top_node,
-						char stack_name) 
+						char stack_name)
 {
 	while (*stack != top_node) //O nó que eu quero meter no topo já lá está?
 	{

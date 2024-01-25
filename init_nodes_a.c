@@ -54,7 +54,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
+static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 {
 	int	len_a;
 	int	len_b;
@@ -63,7 +63,7 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	len_b = lenght_of_stack(b);
 	while (a)
 	{
-		a->cost = a->position; //Isso é uma grande sacada, pois o custo de push é o índice do nó `a` atual
+		a->cost = a->position; //Definir inicialmente o custo como sendo o índice do nó
 		if (!(a->over_median)) //Está abaixo da mediana? Se sim:
 			a->cost = len_a - (a->position);
 		if (a->target->over_median) //Se o target de `a` estiver acima da mediana:
@@ -76,29 +76,29 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 
 void	set_cheapest(t_stack_node *stack)
 {
-	long			cheapest_value; //To store the value of the cheapest node so far
-	t_stack_node	*cheapest_node; //To store a pointer to the cheapest node so far
+	long			cheapest_cost;
+	t_stack_node	*cheapest_node;
 
-	if (!stack) //Check for an empty stack
+	if (!stack)
 		return ;
-	cheapest_value = LONG_MAX; //Assign the biggest `long` as the cheapest value so far
-	while (stack) //Loop through every node until the end of the stack is reached, and we find the cheapest node
+	cheapest_cost = LONG_MAX;
+	while (stack)
 	{
-		if (stack->cost < cheapest_value) //Check if the current node's push cost is cheaper than the cheapest value so far
+		if (stack->cost < cheapest_cost)
 		{
-			cheapest_value = stack->cost; //If so, update the cheapest value to the current node's push cost
-			cheapest_node = stack; //Assign the current node as the cheapest node so far
+			cheapest_cost = stack->cost; //Se sim, atualizar o valor de cheapest_value
+			cheapest_node = stack; //tbm definir (atulizar) o nó mais barato (pode ser o closest smallest ou closest biggesst)
 		}
-		stack = stack->next; //Move to the next node for comparison
+		stack = stack->next;
 	}
-	cheapest_node->cheapest = true; //After iterating through the stack, if no cheaper node is found than the current, then set the cheapest node's `cheapest` attribut to `true` in the data structure
+	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_stack_node *a, t_stack_node *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
+void	init_nodes_a(t_stack_node *a, t_stack_node *b) 
 {
 	set_position(a);
 	set_position(b);
 	set_target_a(a, b);
-	cost_analysis_a(a, b);
+	set_cost_a(a, b);
 	set_cheapest(a);
 }
