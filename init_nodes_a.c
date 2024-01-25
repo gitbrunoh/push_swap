@@ -38,7 +38,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->n < a->n 
+			if (current_b->n < a->n
 				&& current_b->n > closest_smallest)
 			{
 				closest_smallest = current_b->n;
@@ -56,8 +56,8 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 
 static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 {
-	int len_a;
-	int len_b;
+	int	len_a;
+	int	len_b;
 	int	p;
 	int	pt;
 
@@ -68,34 +68,14 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 		p = a->position;
 		pt = a->target->position;
 		if (a->target->over_median && a->over_median)
-			a->cost = max(pt,p);
-		else if (!(a->target->over_median) && !(a->over_median)) 
-			a->cost = max(len_b - pt, len_a - p);
+			a->cost = max (pt, p);
+		else if (!(a->target->over_median) && !(a->over_median))
+			a->cost = max (len_b - pt, len_a - p);
 		else
-			a->cost = min(p, (len_a - p)) + min(pt, (len_b - pt));
+			a->cost = min (p, (len_a - p)) + min (pt, (len_b - pt));
 		a = a->next;
 	}
 }
-
- /*static void	set_cost_a(t_stack_node *a, t_stack_node *b)
-{
-	int	len_a;
-	int	len_b;
-
-	len_a = lenght_of_stack(a);
-	len_b = lenght_of_stack(b);
-	while (a)
-	{
-		a->cost = a->position; //Definir inicialmente o custo como sendo o índice do nó
-		if (!(a->over_median)) //Está abaixo da mediana? Se sim:
-			a->cost = len_a - (a->position);
-		if (a->target->over_median) //Se o target de `a` estiver acima da mediana:
-			a->cost += a->target->position;
-		else //If `a` node is indeed above median and its target `b` node is below median
-			a->cost += len_b - (a->target->position);
-		a = a->next;
-	}
-}*/
 
 void	set_cheapest(t_stack_node *stack)
 {
@@ -109,15 +89,15 @@ void	set_cheapest(t_stack_node *stack)
 	{
 		if (stack->cost < cheapest_cost)
 		{
-			cheapest_cost = stack->cost; //Se sim, atualizar o valor de cheapest_value
-			cheapest_node = stack; //tbm definir (atulizar) o nó mais barato (pode ser o closest smallest ou closest biggesst)
+			cheapest_cost = stack->cost;
+			cheapest_node = stack;
 		}
 		stack = stack->next;
 	}
 	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_stack_node *a, t_stack_node *b) 
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
 	set_position(a);
 	set_position(b);
