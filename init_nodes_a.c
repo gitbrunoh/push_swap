@@ -13,7 +13,7 @@ void	set_position(t_stack_node *stack)
 	if (len % 2 != 0)
 		median = len / 2 + 1;
 	else
-		median = len / 2;
+		median = len / 2 + 0.5;
 	while (stack)
 	{
 		stack->position = i;
