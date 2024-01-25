@@ -31,6 +31,7 @@ static void	append_node(t_stack_node **stack, int n) //Define a function that se
 	node = malloc(sizeof(t_stack_node)); //Allocate memory for the new node
 	if (!node)
 		return ;
+	node->cheapest = false;
 	node->next = NULL; //Set the next pointer of the new node to NULL because it will be the last node in the list
 	node->n = n; //Set the `next` data of of the new node to `n` value
 	if (!(*stack)) //Check if the stack is empty or currently pointing to NULL, indicating a first node needs to be found
