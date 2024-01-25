@@ -52,7 +52,7 @@ void	sort(t_stack_node **a, t_stack_node **b) //Define a function that sorts sta
 {
 	int	len_a; //To store the length of stack `a`
 
-	len_a = stack_len(*a);
+	len_a = lenght_of_stack(*a);
 	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` has more than three nodes and aren't sorted
 		pb(b, a, false);
 	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
