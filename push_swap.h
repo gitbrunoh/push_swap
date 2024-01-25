@@ -17,15 +17,13 @@ typedef struct s_stack_node
 	struct s_stack_node		*previous;
 	struct s_stack_node		*target;
 }					t_stack_node;
-//Errors
+//Errors and initialization
+char			**split(char *s, char c);
 int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
-
-//Initiation
 void			init_stack_a(t_stack_node **a, char **argv);
-char			**split(char *s, char c);
 
 //Nodes initiation
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
@@ -36,7 +34,7 @@ t_stack_node	*get_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
 //***Stack utils
-int				stack_len(t_stack_node *stack);
+int				lenght_of_stack(t_stack_node *stack);
 t_stack_node	*find_last(t_stack_node *stack);
 bool			stack_sorted(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);

@@ -8,7 +8,7 @@ void	set_position(t_stack_node *stack)
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_len(stack) / 2;
+	median = lenght_of_stack(stack) / 2;
 	while (stack)
 	{
 		stack->position = i;
@@ -54,8 +54,8 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b) //Define a functio
 	int	len_a; //To store the length of stack `a`
 	int	len_b; //To store the length of stack `b`
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
+	len_a = lenght_of_stack(a);
+	len_b = lenght_of_stack(b);
 	while (a) //Loop through each node until the end of the stack is reached
 	{
 		a->cost = a->position; //Assign the current `a` node's push cost, its' index value

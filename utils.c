@@ -1,18 +1,18 @@
 #include "push_swap.h"
 
-int	stack_len(t_stack_node *stack) //Define a function that calculates and returns the length of a stack
+int	lenght_of_stack(t_stack_node *stack)
 {
-	int	count; //To store the node count
+	int	len;
 
 	if (!stack) 
 		return (0);
-	count = 0;
-	while (stack) //Loop until the end of the stack is reached
+	len = 0;
+	while (stack)
 	{
-		stack = stack->next; //Move to the next node
-		count++;
+		stack = stack->next;
+		len++;
 	}
-	return (count);
+	return (len);
 }
 
 t_stack_node	*find_last(t_stack_node *stack) //Define a function that returns the pointer to the last node
