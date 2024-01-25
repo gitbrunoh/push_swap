@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static long	ft_atol(const char *s) //Define a function that converts every string into a long value
+static long	ft_atol(const char *s)
 {
 	long	result;
 	int		sign;
@@ -46,7 +46,7 @@ static void	append_node(t_stack_node **stack, int n) //Define a function that se
 	}
 }
 
-void	init_stack_a(t_stack_node **a, char **argv) //Define a function that initiates stack `a` by handling any errors and appending required nodes to complete a stack
+void	init_stack_a(t_stack_node **a, char **argv) 
 {
 	long	n;
 	int		i;
@@ -57,11 +57,11 @@ void	init_stack_a(t_stack_node **a, char **argv) //Define a function that initia
 		if (error_syntax(argv[i]))
 			free_errors(a);
 		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN) //Check for overflow
+		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a); 
-		append_node(a, (int)n); //If no errors, append the node to the linked list by, taking a pointer to stack `a`, create a new node and assign `n` to that new node
+		append_node(a, (int)n);
 		i++;
 	}
 }
