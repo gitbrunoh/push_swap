@@ -49,11 +49,11 @@ static void	move_b_to_a(t_stack_node **a, t_stack_node **b) //Define a function 
 	pa(a, b, false); 
 }
 
-static void	min_on_top(t_stack_node **a) //Define a function that moves the smallest number to the top
+static void	min_on_top(t_stack_node **a) 
 {
-	while ((*a)->n != find_min(*a)->n) //As long as the smallest number is not at the top
+	while ((*a)->n != find_min(*a)->n)
 	{
-		if (find_min(*a)->over_median) //Rotate or reverse rotate according to the position of the node on the median
+		if (find_min(*a)->over_median)
 			ra(a, false);
 		else
 			rra(a, false);

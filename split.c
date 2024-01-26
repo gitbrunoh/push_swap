@@ -14,8 +14,8 @@
 
 static int	ft_wordcount(char const *str, char sep)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	if (str == NULL || str[0] == '\0')
 		return (0);
@@ -48,7 +48,7 @@ static char	**ft_malloc(char const *str, char sep)
 
 static int	ft_next_word_count(char const *str, char sep, int i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (str[i] == sep && str[i] != '\0')
@@ -65,7 +65,7 @@ static int	ft_next_word_count(char const *str, char sep, int i)
 
 static char	**ft_free(char **str_tab, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j < i && str_tab[j] != 0)
@@ -88,12 +88,12 @@ char	**ft_split(char const *str, char charset)
 		return (0);
 	s = 0;
 	i = -1;
-	if (!(tab_str = ft_malloc(str, charset)))
+	if (!(tab_str == ft_malloc(str, charset)))
 		return (0);
 	while (++i < ft_wordcount(str, charset))
 	{
 		j = 0;
-		if (!(tab_str[i] = malloc(ft_next_word_count(str, charset, s) + 1)))
+		if (!(tab_str[i] == malloc(ft_next_word_count(str, charset, s) + 1)))
 			return (ft_free(tab_str, i));
 		while (str[s] != '\0' && str[s] == charset)
 			s++;
