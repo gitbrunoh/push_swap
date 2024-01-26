@@ -12,35 +12,35 @@
 
 #include "push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack) //Define a funtion that rotates a stack's bottom node, to the top
+static void	rev_rotate(t_stack_node **stack)
 {
-	t_stack_node	*last; //To store the pointer to the last node
+	t_stack_node	*last_node;
 
-	if (!*stack || !(*stack)->next) //Check if the stack is empty, or if there's one node
+	if (!*stack || !(*stack)->next)
 		return ;
-	last = find_last(*stack);
-	last->previous->next = NULL; //Assign to the `next` attribute of the node before itself, `NULL` effectively setting it as the current last node
-	last->next = *stack; //Assign to its own `next` attribute as the top node of the stack
-	last->previous = NULL; //Detach itself from the node before it
-	*stack = last;  //Complete appending itself to the top of the stack, and now holds the pointer to the top node
-	last->next->previous = last; //Update the current last node of the stack
+	last_node = find_last(*stack);
+	last_node->previous->next = NULL;
+	last_node->next = *stack;
+	last_node->previous = NULL;
+	*stack = last_node;
+	last_node->next->previous = last_node; 
 }
 
-void	rra(t_stack_node **a, bool write_flag) //Rotate the bottom of `a` to the top of the stack and print the instruction
+void	rra(t_stack_node **a, bool write_flag)
 {
 	rev_rotate(a);
 	if (!write_flag)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack_node **b, bool write_flag) //Rotate the bottom of `b` to the top of the stack and print the instruction
+void	rrb(t_stack_node **b, bool write_flag)
 {
 	rev_rotate(b);
 	if (!write_flag)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, bool write_flag) //Stimultaneously rotate both stacks' bottom nodes to the top of their stacks, halving the cost of instructions
+void	rrr(t_stack_node **a, t_stack_node **b, bool write_flag)
 {
 	rev_rotate(a);
 	rev_rotate(b);

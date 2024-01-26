@@ -60,14 +60,14 @@ static void	min_on_top(t_stack_node **a) //Define a function that moves the smal
 	}
 }
 
-void	sort(t_stack_node **a, t_stack_node **b) //Define a function that sorts stack `a` if it has more than 3 nodes
+void	sort(t_stack_node **a, t_stack_node **b)
 {
-	int	len_a; //To store the length of stack `a`
+	int	len_a;
 
 	len_a = lenght_of_stack(*a);
-	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` has more than three nodes and aren't sorted
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
-	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
 	{
