@@ -63,23 +63,23 @@ static void	min_on_top(t_stack_node **a) //Define a function that moves the smal
 void	sort(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;
+	int	counter;
 
+	counter = 0;
 	len_a = lenght_of_stack(*a);
-	if (len_a-- > 3 && !stack_sorted(*a))
+	while (len_a-- > 3 && !stack_sorted(*a) && counter++ < 2)
 		pb(b, a, false);
-	if (len_a-- > 3 && !stack_sorted(*a))
-		pb(b, a, false);
-	while (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
+	while (len_a-- > 3 && !stack_sorted(*a))
 	{
-		init_nodes_a(*a, *b); //Iniate all nodes from both stacks
-		move_a_to_b(a, b); //Move the cheapest `a` nodes into a sorted stack `b`, until three nodes are left in stack `a`
+		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
 	}
 	tiny_sort(a);
-	while (*b) //Until the end of stack `b` is reached
+	while (*b)
 	{
-		init_nodes_b(*a, *b); //Initiate all nodes from both stacks
-		move_b_to_a(a, b); //Move all `b` nodes back to a sorted stack `a`
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
 	}
-	set_position(*a); //Refresh the current position of stack `a`
-	min_on_top(a); //Ensure smallest number is on top
+	set_position(*a);
+	min_on_top(a);
 }
