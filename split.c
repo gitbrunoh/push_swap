@@ -11,96 +11,92 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stddef.h>
 
-static int	ft_wordcount(char const *str, char sep)
+static int	count_words(char *str, char separator)
 {
-	int	i;
-	int	count;
+	int		count;
+	bool	inside_word;
 
-	if (str == NULL || str[0] == '\0')
-		return (0);
-	i = 1;
 	count = 0;
-	if (str[0] != sep)
-		count++;
-	while (str[i] != '\0')
+	while (*str)
 	{
-		if (str[i] != sep && str[i - 1] == sep)
-			count++;
-		i++;
+		inside_word = false;
+		while (*str == separator && *str)
+			++str;
+		while (*str != separator && *str)
+		{
+			if (!inside_word)
+			{
+				++count;
+				inside_word = true;
+			}
+			++str;
+		}
 	}
 	return (count);
 }
 
-static char	**ft_malloc(char const *str, char sep)
+static char	*get_next_word(char *str, char separator)
 {
-	int		len;
-	char	**tab_str;
+	static int	cursor = 0;
+	char		*next_str;
+	int			len;
+	int			i;
 
-	len = ft_wordcount(str, sep);
-	tab_str = malloc(sizeof(*tab_str) * (len + 1));
-	if (tab_str == 0)
-	{
-		return (0);
-	}
-	return (tab_str);
+	len = 0;
+	i = 0;
+	while (str[cursor] == separator)
+		++cursor;
+	while ((str[cursor + len] != separator) && str[cursor + len])
+		++len;
+	next_str = malloc((size_t)len * sizeof(char) + 1);
+	if (NULL == next_str)
+		return (NULL);
+	while ((str[cursor] != separator) && str[cursor])
+		next_str[i++] = str[cursor++];
+	next_str[i] = '\0';
+	return (next_str);
 }
 
-static int	ft_next_word_count(char const *str, char sep, int i)
+/*
+ * I recreate an argv in the HEAP
+ *
+ * +2 because i want to allocate space
+ * for the "\0" Placeholder and the final NULL
+ *
+ * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
+ * 				 |->[p1]->"Hello"
+ * 				 |->[p2]->"how"
+ * 				 |->[p3]->"Are"
+ * 				 |->[..]->"..""
+ * 				 |->[NULL]
+*/
+char	**ft_split(char *str, char separator)
 {
-	int	count;
-
-	count = 0;
-	while (str[i] == sep && str[i] != '\0')
-	{
-		i++;
-	}
-	while (str[i] != '\0' && str[i] != sep)
-	{
-		count++;
-		i++;
-	}
-	return (count);
-}
-
-static char	**ft_free(char **str_tab, int i)
-{
-	int	j;
-
-	j = 0;
-	while (j < i && str_tab[j] != 0)
-	{
-		free(str_tab[j]);
-		j++;
-	}
-	free(str_tab);
-	return (0);
-}
-
-char	**ft_split(char const *str, char charset)
-{
-	int		s;
+	int		words_number;
+	char	**vector_strings;
 	int		i;
-	int		j;
-	char	**tab_str;
 
-	if (str == 0)
-		return (0);
-	s = 0;
-	i = -1;
-	if (!(tab_str == ft_malloc(str, charset)))
-		return (0);
-	while (++i < ft_wordcount(str, charset))
+	i = 0;
+	words_number = count_words(str, separator);
+	if (!words_number)
+		exit(1);
+	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
+	if (NULL == vector_strings)
+		return (NULL);
+	while (words_number-- >= 0)
 	{
-		j = 0;
-		if (!(tab_str[i] == malloc(ft_next_word_count(str, charset, s) + 1)))
-			return (ft_free(tab_str, i));
-		while (str[s] != '\0' && str[s] == charset)
-			s++;
-		while (str[s] != '\0' && str[s] != charset)
-			tab_str[i][j++] = str[s++];
-		tab_str[i][j] = '\0';
+		if (0 == i)
+		{
+			vector_strings[i] = malloc(sizeof(char));
+			if (NULL == vector_strings[i])
+				return (NULL);
+			vector_strings[i++][0] = '\0';
+			continue ;
+		}
+		vector_strings[i++] = get_next_word(str, separator);
 	}
-	tab_str[i] = 0;
-	return (tab_str);
+	vector_strings[i] = NULL;
+	return (vector_strings);
 }
