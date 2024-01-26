@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_operation.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/26 14:21:12 by brunhenr          #+#    #+#             */
+/*   Updated: 2024/01/26 14:21:14 by brunhenr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	rev_rotate(t_stack_node **stack) //Define a funtion that rotates a stack's bottom node, to the top
