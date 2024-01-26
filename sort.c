@@ -63,11 +63,11 @@ static void	min_on_top(t_stack_node **a) //Define a function that moves the smal
 void	sort(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;
-	int	counter;
 
-	counter = 0;
 	len_a = lenght_of_stack(*a);
-	while (len_a-- > 3 && !stack_sorted(*a) && counter++ < 2)
+	if (len_a-- > 3 && !stack_sorted(*a))
+		pb(b, a, false);
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
