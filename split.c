@@ -72,7 +72,7 @@ static char	*get_next_word(char *str, char separator)
  * 				 |->[..]->"..""
  * 				 |->[NULL]
 */
-char	**ft_split(char *str, char separator)
+char	**split(char *str, char separator)
 {
 	int		words_number;
 	char	**vector_strings;

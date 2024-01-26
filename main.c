@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv = split(argv[1], ' ');
 	init_stack_a(&stack_a, argv + 1);
 	if (!stack_sorted(stack_a))
 	{
