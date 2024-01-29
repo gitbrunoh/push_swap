@@ -32,9 +32,9 @@ typedef struct s_stack_node
 	struct s_stack_node		*previous;
 	struct s_stack_node		*target;
 }					t_stack_node;
+
 //Errors and stack initialization
 char			**ft_splitpush(char *str);
-char			**split(char *s, char c);
 int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);

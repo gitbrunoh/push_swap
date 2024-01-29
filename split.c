@@ -1,102 +1,98 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 14:21:58 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:22:01 by brunhenr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
-#include <stddef.h>
 
-static int	count_words(char *str, char separator)
+static int	count_w(char *str)
 {
-	int		count;
-	bool	inside_word;
+	int	i;
+	int	wc;
 
-	count = 0;
-	while (*str)
-	{
-		inside_word = false;
-		while (*str == separator && *str)
-			++str;
-		while (*str != separator && *str)
-		{
-			if (!inside_word)
-			{
-				++count;
-				inside_word = true;
-			}
-			++str;
-		}
-	}
-	return (count);
-}
-
-static char	*get_next_word(char *str, char separator)
-{
-	static int	cursor = 0;
-	char		*next_str;
-	int			len;
-	int			i;
-
-	len = 0;
 	i = 0;
-	while (str[cursor] == separator)
-		++cursor;
-	while ((str[cursor + len] != separator) && str[cursor + len])
-		++len;
-	next_str = malloc((size_t)len * sizeof(char) + 1);
-	if (NULL == next_str)
-		return (NULL);
-	while ((str[cursor] != separator) && str[cursor])
-		next_str[i++] = str[cursor++];
-	next_str[i] = '\0';
-	return (next_str);
+	wc = 0;
+	while (str[i])
+	{
+		while (str[i] == ' ')
+			i++;
+		if (str[i] != '\0')
+			wc++;
+		while (str[i] != '\0' && str[i] != ' ')
+			i++;
+	}
+	return (wc);
 }
 
-/*
- * I recreate an argv in the HEAP
- *
- * +2 because i want to allocate space
- * for the "\0" Placeholder and the final NULL
- *
- * vector_strings-->[p0]-> "\0" Placeholder to mimic argv
- * 				 |->[p1]->"Hello"
- * 				 |->[p2]->"how"
- * 				 |->[p3]->"Are"
- * 				 |->[..]->"..""
- * 				 |->[NULL]
-*/
-char	**split(char *str, char separator)
+static char	*ft_strcopy(char *str1, char *str2, int n)
 {
-	int		words_number;
-	char	**vector_strings;
+	int	i;
+
+	i = 0;
+	while ((n != 0) && (str2[i] != '\0'))
+	{
+		str1[i] = str2[i];
+		n--;
+		i++;
+	}
+	str1[i] = '\0';
+	return (str1);
+}
+
+static char	**allocate_memory(char **out, int k, int size)
+{
+	out[k] = (char *)malloc(sizeof(char) * size);
+	if (out[k] == NULL)
+	{
+		while (k >= 0)
+			free(out[k--]);
+		free(out);
+		return (NULL);
+	}
+	return (out);
+}
+
+static char	**handle_token(char **out, char *str, int *i, int *k)
+{
+	int	j;
+
+	while (str[*i] == ' ')
+		(*i)++;
+	j = *i;
+	while (str[*i] != '\0' && str[*i] != ' ')
+		(*i)++;
+	if (*i > j)
+	{
+		out = allocate_memory(out, *k, (*i - j) + 1);
+		if (out == NULL)
+			return (NULL);
+		ft_strcopy(out[*k], str + j, *i - j);
+		out[*k][*i - j] = '\0';
+		(*k)++;
+	}
+	return (out);
+}
+
+char	**ft_splitpush(char *str)
+{
+	char	**out;
 	int		i;
+	int		k;
 
 	i = 0;
-	words_number = count_words(str, separator);
-	if (!words_number)
-		exit(1);
-	vector_strings = malloc(sizeof(char *) * (size_t)(words_number + 2));
-	if (NULL == vector_strings)
+	k = 0;
+	out = malloc((count_w(str) + 2) * sizeof(char *));
+	if (out == NULL)
 		return (NULL);
-	while (words_number-- >= 0)
+	out[0] = (char *)malloc(sizeof(char));
+	if (out[0] == NULL)
 	{
-		if (0 == i)
-		{
-			vector_strings[i] = malloc(sizeof(char));
-			if (NULL == vector_strings[i])
-				return (NULL);
-			vector_strings[i++][0] = '\0';
-			continue ;
-		}
-		vector_strings[i++] = get_next_word(str, separator);
+		free(out);
+		return (NULL);
 	}
-	vector_strings[i] = NULL;
-	return (vector_strings);
+	out[0][0] = '\0';
+	k++;
+	while (str[i])
+	{
+		out = handle_token(out, str, &i, &k);
+		if (out == NULL)
+			return (NULL);
+	}
+	out[k] = NULL;
+	return (out);
 }
