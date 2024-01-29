@@ -28,7 +28,30 @@ static void rotate_both(t_stack_node **a,
     set_position(*b);
 }
 
-static void	move_a_to_b(t_stack_node **a, t_stack_node **b) //Define a function that prepares the cheapest nodes on top of the stacks for pushing `a` nodes to stack `b`, until there are three nodes left in `a`
+void	prep_for_push(t_stack_node **stack,
+						t_stack_node *top_node,
+						char stack_name)
+{
+	while (*stack != top_node) //O nó que eu quero meter no topo já lá está?
+	{
+		if (stack_name == 'a') //Se não, e for o stack `a`:
+		{
+			if (top_node->over_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b') //Se não, e for o stack `b`:
+		{
+			if (top_node->over_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}	
+	}
+}
+
+static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
 	t_stack_node   *stack;
@@ -53,12 +76,6 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b) //Define a function 
 	prep_for_push(a, cheapest_node, 'a'); //Ensure the cheapest nodes is at the top, ready for pushing
 	prep_for_push(b, cheapest_node->target, 'b'); //Ensure the target node is at the top, ready for pushing
 	pb(b, a, false);
-}
-
-static void	move_b_to_a(t_stack_node **a, t_stack_node **b) //Define a function that prepares `b`'s target `a` nodes for pushing all `b` nodes back to stack `a` 
-{
-	prep_for_push(a, (*b)->target, 'a'); //Ensure `b`'s target `a` node is on top of the stack
-	pa(a, b, false); 
 }
 
 static void	min_on_top(t_stack_node **a) 
@@ -90,7 +107,8 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	while (*b)
 	{
 		init_nodes_b(*a, *b);
-		move_b_to_a(a, b);
+		prep_for_push(a, (*b)->target, 'a');
+		pa(a, b, false);
 	}
 	set_position(*a);
 	min_on_top(a);
