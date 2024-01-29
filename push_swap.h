@@ -33,6 +33,15 @@ typedef struct s_stack_node
 	struct s_stack_node		*target;
 }					t_stack_node;
 
+//Utilities
+int				lenght_of_stack(t_stack_node *stack);
+int				max_n(int a, int b);
+int				min_n(int a, int b);
+t_stack_node	*find_last(t_stack_node *stack);
+bool			stack_sorted(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack);
+
 //Errors and stack initialization
 char			**ft_splitpush(char *str);
 int				syntax_check(char *str_n);
@@ -47,13 +56,6 @@ void			handle_nodes_b(t_stack_node *a, t_stack_node *b);
 void			set_position(t_stack_node *stack);
 void			set_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
-
-//Utils
-int				lenght_of_stack(t_stack_node *stack);
-t_stack_node	*find_last(t_stack_node *stack);
-bool			stack_sorted(t_stack_node *stack);
-t_stack_node	*find_min(t_stack_node *stack);
-t_stack_node	*find_max(t_stack_node *stack);
 
 //Operations (subject)
 void			sa(t_stack_node **a, bool write_flag);

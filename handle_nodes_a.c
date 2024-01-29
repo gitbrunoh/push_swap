@@ -80,11 +80,11 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 		p = a->position;
 		pt = a->target->position;
 		if (a->target->over_median && a->over_median)
-			a->cost = max (pt, p);
+			a->cost = max_n(pt, p);
 		else if (!(a->target->over_median) && !(a->over_median))
-			a->cost = max (len_b - pt, len_a - p);
+			a->cost = max_n(len_b - pt, len_a - p);
 		else
-			a->cost = min (p, (len_a - p)) + min (pt, (len_b - pt));
+			a->cost = min_n(p, (len_a - p)) + min (pt, (len_b - pt));
 		a = a->next;
 	}
 }
