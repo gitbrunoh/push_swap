@@ -84,7 +84,7 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 		else if (!(a->target->over_median) && !(a->over_median))
 			a->cost = max_n(len_b - pt, len_a - p);
 		else
-			a->cost = min_n(p, (len_a - p)) + min (pt, (len_b - pt));
+			a->cost = min_n(p, (len_a - p)) + min_n(pt, (len_b - pt));
 		a = a->next;
 	}
 }
