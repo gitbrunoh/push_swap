@@ -18,9 +18,6 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-# define max(a,b) ((a) > (b) ? (a) : (b))
-# define min(a,b) ((a) < (b) ? (a) : (b))
-
 typedef struct s_stack_node
 {
 	int						n;

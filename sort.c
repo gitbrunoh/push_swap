@@ -15,16 +15,16 @@
 static void rotate_both(t_stack_node **a,
                    t_stack_node **b,
                    t_stack_node *cheapest_node,
-                   bool reverse) // true for reverse rotation, false for normal rotation
+                   bool reverse)
 {
-    while (*b != cheapest_node->target && *a != cheapest_node) {
-        if (reverse) {
-            rrr(a, b, false); // Reverse rotate both `a` and `b` nodes
-        } else {
-            rr(a, b, false); // Rotate both `a` and `b` nodes
-        }
+    while (*a != cheapest_node && *b != cheapest_node->target)
+	{
+		if (reverse)
+			rrr(a, b, false);
+		else 
+            rr(a, b, false);
     }
-    set_position(*a); // Refresh current node positions
+    set_position(*a);
     set_position(*b);
 }
 
@@ -68,13 +68,13 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 		}
 		stack = stack->next;
 	}
-	if (cheapest_node->over_median && cheapest_node->target->over_median) //If both the cheapest `a` node and its target `b` node are above the median
+	if (cheapest_node->over_median && cheapest_node->target->over_median)
 		rotate_both(a, b, cheapest_node, false);
 	else if (!(cheapest_node->over_median) 
-		&& !(cheapest_node->target->over_median)) //If both the cheapest `a` node and its target `b` node are below the median
-		rotate_both(a, b, cheapest_node, true); //`rev_rotate_both` will execute if neither nodes are at the top
-	prep_for_push(a, cheapest_node, 'a'); //Ensure the cheapest nodes is at the top, ready for pushing
-	prep_for_push(b, cheapest_node->target, 'b'); //Ensure the target node is at the top, ready for pushing
+		&& !(cheapest_node->target->over_median))
+		rotate_both(a, b, cheapest_node, true);
+	prep_for_push(a, cheapest_node, 'a');
+	prep_for_push(b, cheapest_node->target, 'b');
 	pb(b, a, false);
 }
 
