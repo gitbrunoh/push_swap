@@ -36,7 +36,7 @@ typedef struct s_stack_node
 //Errors and stack initialization
 char			**ft_splitpush(char *str);
 int				syntax_check(char *str_n);
-int				duplicate_check(t_stack_node *a, int n);
+int				duplicates_check(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
 void			init_stack_a(t_stack_node **a, char **argv);
