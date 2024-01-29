@@ -34,7 +34,7 @@ static char	*ft_strlcpy(char *str1, char *str2, int n)
 	return (str1);
 }
          
-char    **ft_split(char *str)
+char    **ft_splitpush(char *str)
 {
     int	i = 0;
     int	j = 0;
