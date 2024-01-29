@@ -19,7 +19,7 @@ static int	count_w(char *str)
 	return(wc);
 }
 
-static char	*ft_strlcpy(char *str1, char *str2, int n)
+static char	*ft_strcopy(char *str1, char *str2, int n)
 {
 	int i;
 
@@ -61,7 +61,7 @@ char    **ft_splitpush(char *str)
                 free(out);
                 return (NULL);
             }
-            ft_strlcpy(out[k], str + j, i - j);
+            ft_strcopy(out[k], str + j, i - j);
             out[k][i - j] = '\0';
             k++;
         }
