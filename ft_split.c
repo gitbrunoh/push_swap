@@ -36,36 +36,44 @@ static char	*ft_strcopy(char *str1, char *str2, int n)
          
 char    **ft_splitpush(char *str)
 {
-    int	i = 0;
-    int	j = 0;
-    int	k = 0;
-    char	**out;
+	int	i = 0;
+	int	j = 0;
+	int	k = 0;
+	char	**out;
 
-    out = malloc((count_w(str) + 1) * sizeof(char *));
-    if (out == NULL)
-        return (NULL);
-    while (str[i])
-    {
-        while (str[i] == ' ')
-            i++;
-        j = i;
-        while (str[i] != '\0' && str[i] != ' ')
-            i++;
-        if (i > j)
-        {
-            out[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
-            if (out[k] == NULL)
-            {  
-                while (k >= 0)
-                    free(out[k--]);
-                free(out);
-                return (NULL);
-            }
-            ft_strcopy(out[k], str + j, i - j);
-            out[k][i - j] = '\0';
-            k++;
-        }
-    }
-    out[k] = NULL;
-    return (out);
-}  
+	out = malloc((count_w(str) + 2) * sizeof(char *));
+	if (out == NULL)
+		return (NULL);
+	out[0] = (char *)malloc(sizeof(char));
+	if (out[0] == NULL)
+	{
+		free(out);
+		return (NULL);
+	}
+	out[0][0] = '\0';
+	k++;
+	while (str[i])
+	{
+		while (str[i] == ' ')
+			i++;
+		j = i;
+		while (str[i] != '\0' && str[i] != ' ')
+			i++;
+		if (i > j)
+		{
+			out[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
+			if (out[k] == NULL)
+			{  
+				while (k >= 0)
+					free(out[k--]);
+				free(out);
+				return (NULL);
+			}
+			ft_strcopy(out[k], str + j, i - j);
+			out[k][i - j] = '\0';
+			k++;
+		}
+	}
+	out[k] = NULL;
+	return (out);
+}

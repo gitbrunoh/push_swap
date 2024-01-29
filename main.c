@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_splitpush(argv[1]);
-	init_stack_a(&stack_a, argv);
+	init_stack_a(&stack_a, argv + 1);
 	if (!stack_sorted(stack_a))
 	{
 		if (lenght_of_stack(stack_a) == 2)
