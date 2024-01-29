@@ -30,9 +30,21 @@ static void rotate_both(t_stack_node **a,
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b) //Define a function that prepares the cheapest nodes on top of the stacks for pushing `a` nodes to stack `b`, until there are three nodes left in `a`
 {
-	t_stack_node	*cheapest_node; //To store the pointer to the cheapest `a` node
+	t_stack_node	*cheapest_node;
+	t_stack_node   *stack;
 
-	cheapest_node = get_cheapest(*a); 
+	stack = *a;
+	if (!stack)
+		return;
+	while (stack)
+	{
+		if (stack->cheapest)
+		{
+			cheapest_node = stack;
+			break;
+		}
+		stack = stack->next;
+	}
 	if (cheapest_node->over_median && cheapest_node->target->over_median) //If both the cheapest `a` node and its target `b` node are above the median
 		rotate_both(a, b, cheapest_node, false);
 	else if (!(cheapest_node->over_median) 
