@@ -2,12 +2,18 @@
 
 int max_n(int a, int b)
 {
-    return ((a > b) ? a : b);
+	if (a > b)
+    	return (a);
+	else
+		return (b);
 }
 
 int min_n(int a, int b)
 {
-    return ((a < b) ? a : b);
+    if (a < b)
+		return (a);
+	else 
+		return (b);
 }
 
 
