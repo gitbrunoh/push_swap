@@ -35,18 +35,17 @@ typedef struct s_stack_node
 
 //Errors and stack initialization
 char			**ft_splitpush(char *str);
-int				error_syntax(char *str_n);
-int				error_duplicate(t_stack_node *a, int n);
+int				syntax_check(char *str_n);
+int				duplicate_check(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
 void			init_stack_a(t_stack_node **a, char **argv);
 
 //Algorithm Core
-void			init_nodes_a(t_stack_node *a, t_stack_node *b);
-void			init_nodes_b(t_stack_node *a, t_stack_node *b);
+void			handle_nodes_a(t_stack_node *a, t_stack_node *b);
+void			handle_nodes_b(t_stack_node *a, t_stack_node *b);
 void			set_position(t_stack_node *stack);
 void			set_cheapest(t_stack_node *stack);
-t_stack_node	*get_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
 //Utils
@@ -68,6 +67,7 @@ void			rrb(t_stack_node **b, bool write_flag);
 void			rrr(t_stack_node **a, t_stack_node **b, bool write_flag);
 void			pa(t_stack_node **a, t_stack_node **b, bool write_flag);
 void			pb(t_stack_node **b, t_stack_node **a, bool write_flag);
+
 //Sorting fts
 void			tiny_sort(t_stack_node **a);
 void			sort(t_stack_node **a, t_stack_node **b);

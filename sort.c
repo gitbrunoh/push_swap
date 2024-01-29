@@ -100,13 +100,13 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
-		init_nodes_a(*a, *b);
+		handle_nodes_a(*a, *b);
 		move_a_to_b(a, b);
 	}
 	tiny_sort(a);
 	while (*b)
 	{
-		init_nodes_b(*a, *b);
+		handle_nodes_b(*a, *b);
 		prep_for_push(a, (*b)->target, 'a');
 		pa(a, b, false);
 	}

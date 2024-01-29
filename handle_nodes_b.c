@@ -40,7 +40,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	init_nodes_b(t_stack_node *a, t_stack_node *b)
+void	handle_nodes_b(t_stack_node *a, t_stack_node *b)
 {
 	set_position(a);
 	set_position(b);

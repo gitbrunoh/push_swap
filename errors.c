@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	error_syntax(char *str_n)
+int	syntax_check(char *str_n)
 {
 	if (!(*str_n == '+'
 			|| *str_n == '-'
@@ -30,7 +30,7 @@ int	error_syntax(char *str_n)
 	return (0);
 }
 
-int	error_duplicate(t_stack_node *a, int n)
+int	duplicates_check(t_stack_node *a, int n)
 {
 	if (!a)
 		return (0);
@@ -54,14 +54,14 @@ void	free_stack(t_stack_node **stack)
 	while (current)
 	{
 		tmp = current->next;
-		current->n = 0; //This is not necessary, but it's a good practice
+		current->n = 0; //Não é necessário, mas é good practice
 		free(current);
 		current = tmp;
 	}
 	*stack = NULL;
 }
 
- void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a)
 {
 	free_stack(a);
 	write(1, "Error\n", 6);

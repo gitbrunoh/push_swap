@@ -67,12 +67,12 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (error_syntax(argv[i]))
+		if (syntax_check(argv[i]))
 			free_errors(a);
 		n = ft_atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
-		if (error_duplicate(*a, (int)n))
+		if (duplicate_check(*a, (int)n))
 			free_errors(a);
 		append_node(a, (int)n);
 		i++;
