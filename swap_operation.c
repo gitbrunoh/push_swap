@@ -14,14 +14,14 @@
 
 static void	swap(t_stack_node **head)
 {
-	if (!*head || !(*head)->next) //Checar se existe um head e um segundo nó
+	if (!*head || !(*head)->next)
 		return ;
-	*head = (*head)->next; 
-	(*head)->previous->previous = *head; //O previous do antigo head passa a ser o novo head
-	(*head)->previous->next = (*head)->next; //O next do antigo head passa a ser o antigo next do novo head
-	if ((*head)->next) //Chechar se existe um terceiro nó 
-		(*head)->next->previous = (*head)->previous; //Se sim, bora ligar os fios do terceiro nó
-	(*head)->next = (*head)->previous; 
+	*head = (*head)->next;
+	(*head)->previous->previous = *head;
+	(*head)->previous->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->previous = (*head)->previous;
+	(*head)->next = (*head)->previous;
 	(*head)->previous = NULL;
 }
 

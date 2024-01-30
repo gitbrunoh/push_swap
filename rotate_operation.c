@@ -18,13 +18,13 @@ static void	rotate(t_stack_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_node = find_last(*stack); 
+	last_node = find_last(*stack);
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->previous = NULL;
 	last_node->next->previous = last_node;
 	last_node->next->next = NULL;
-}		
+}
 
 void	ra(t_stack_node **a, bool write_flag)
 {

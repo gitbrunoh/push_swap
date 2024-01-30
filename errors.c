@@ -30,15 +30,15 @@ int	syntax_check(char *str_n)
 	return (0);
 }
 
-int	duplicates_check(t_stack_node *a, int n)
+int	duplicates_check(t_stack_node *node_a, int n)
 {
-	if (!a)
+	if (!node_a)
 		return (0);
-	while (a)
+	while (node_a)
 	{
-		if (a->n == n)
+		if (node_a->n == n)
 			return (1);
-		a = a->next;
+		node_a = node_a->next;
 	}
 	return (0);
 }
@@ -54,7 +54,7 @@ void	free_stack(t_stack_node **stack)
 	while (current)
 	{
 		tmp = current->next;
-		current->n = 0; //Não é necessário, mas é good practice
+		current->n = 0;
 		free(current);
 		current = tmp;
 	}

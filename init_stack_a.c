@@ -19,8 +19,7 @@ static long	ft_atol(const char *s)
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
+	while ((*s >= 9 && *s <= 13) || *s == 32)
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -44,12 +43,12 @@ static void	append_node(t_stack_node **stack, int n)
 	if (!new)
 		return ;
 	new->cheapest = false;
-	new->next = NULL; //será o último node da pilha, ou seja, o lá de baixo
+	new->next = NULL;
 	new->n = n;
 	if (!(*stack))
 	{
 		*stack = new;
-		new->previous = NULL; //O parâmetro nexta já está NULL, mas o previous não
+		new->previous = NULL;
 	}
 	else
 	{

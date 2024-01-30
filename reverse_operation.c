@@ -23,7 +23,7 @@ static void	rev_rotate(t_stack_node **stack)
 	last_node->next = *stack;
 	last_node->previous = NULL;
 	*stack = last_node;
-	last_node->next->previous = last_node; 
+	last_node->next->previous = last_node;
 }
 
 void	rra(t_stack_node **a, bool write_flag)

@@ -14,7 +14,7 @@
 
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
-	t_stack_node	*push_node; //Armazenar o node que será pushado
+	t_stack_node	*push_node; 
 
 	if (!*src) //O top node que será pushado existe?
 		return ;

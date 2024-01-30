@@ -24,7 +24,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->n > b->n 
+			if (current_a->n > b->n
 				&& current_a->n < closest_bigger)
 			{
 				closest_bigger = current_a->n;
