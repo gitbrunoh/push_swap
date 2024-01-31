@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:16:48 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:18:38 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:56:25 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack_node
 	struct s_stack_node		*target;
 }					t_stack_node;
 
-//Utilities
+//Utils functions
 int				lenght_of_stack(t_stack_node *stack);
 int				max_n(int a, int b);
 int				min_n(int a, int b);
@@ -39,7 +39,7 @@ bool			stack_sorted(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 
-//Errors and stack initialization
+//Errors check and stack initialization
 char			**ft_splitpush(char *str);
 int				syntax_check(char *str_n);
 int				duplicates_check(t_stack_node *a, int n);

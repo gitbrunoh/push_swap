@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:19:32 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:19:38 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:10:07 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int	syntax_check(char *str_n)
 {
 	if (!(*str_n == '+'
 			|| *str_n == '-'
-			|| (*str_n >= '0' && *str_n <= '9')))
+			|| ft_isdigit(*str_n)))
 		return (1);
 	if ((*str_n == '+'
 			|| *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
+		&& !(ft_isdigit(*(str_n + 1))))
 		return (1);
 	while (*++str_n)
 	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
+		if (!(ft_isdigit(*str_n)))
 			return (1);
 	}
 	return (0);
@@ -43,14 +43,14 @@ int	duplicates_check(t_stack_node *node_a, int n)
 	return (0);
 }
 
-void	free_stack(t_stack_node **stack)
+void	free_stack(t_stack_node **a)
 {
 	t_stack_node	*tmp;
 	t_stack_node	*current;
 
-	if (!stack)
+	if (!a)
 		return ;
-	current = *stack;
+	current = *a;
 	while (current)
 	{
 		tmp = current->next;
@@ -58,7 +58,7 @@ void	free_stack(t_stack_node **stack)
 		free(current);
 		current = tmp;
 	}
-	*stack = NULL;
+	*a = NULL;
 }
 
 void	free_errors(t_stack_node **a)
