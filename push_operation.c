@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:20:44 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:20:46 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:28:19 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node; 
 
-	if (!*src) //O top node que será pushado existe?
+	if (!*src)
 		return ;
 	push_node = *src;
 	*src = (*src)->next; 
-	if (*src) //Checar se essse next node existe
-		(*src)->previous = NULL; //Se sim, ele passa a ser o head, ou seja, tem o previous como NULL
-	push_node->previous = NULL; //Detach the node to push from its stack
+	if (*src)
+		(*src)->previous = NULL;
+	push_node->previous = NULL; //ja n estava NULL??
 	if (!*dst)
 	{
-		*dst = push_node; //Se o outro stack estiver vazio, o node que será pushado passa a ser o head
-		push_node->next = NULL; //Assegurar que é o último node da pilha e terminar com NULL
+		*dst = push_node;
+		push_node->next = NULL;
 	}
-	else  
+	else
 	{
-		push_node->next = *dst; //o Next do novo head de b será o dst, ou seja, o head antigo
-		push_node->next->previous = push_node; //Se o next é o head antigo, o previous dele é o novo head
-		*dst = push_node; //Agora sim, dando o correto nome aos bois. O push_node é o novo head
+		push_node->next = *dst;
+		push_node->next->previous = push_node;
+		*dst = push_node;
 	}
 }
 
