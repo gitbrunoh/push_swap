@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:20:44 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/31 15:28:19 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:17:33 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool write_flag)
-{
-	push(a, b); 
-	if (!write_flag) 
-		write(1, "pa\n", 3);
-}
-
 void	pb(t_stack_node **b, t_stack_node **a, bool write_flag)
 {
 	push(b, a);
 	if (!write_flag)
 		write(1, "pb\n", 3);
+}
+
+void	pa(t_stack_node **a, t_stack_node **b, bool write_flag)
+{
+	push(a, b); 
+	if (!write_flag) 
+		write(1, "pa\n", 3);
 }

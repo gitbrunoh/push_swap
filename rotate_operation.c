@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:20:58 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:21:01 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:18:31 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ static void	rotate(t_stack_node **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra(t_stack_node **a, bool write_flag)
-{
-	rotate(a);
-	if (!write_flag)
-		write(1, "ra\n", 3);
-}
-
 void	rb(t_stack_node **b, bool write_flag)
 {
 	rotate(b);
 	if (!write_flag)
 		write(1, "rb\n", 3);
+}
+
+void	ra(t_stack_node **a, bool write_flag)
+{
+	rotate(a);
+	if (!write_flag)
+		write(1, "ra\n", 3);
 }
 
 void	rr(t_stack_node **a, t_stack_node **b, bool write_flag)

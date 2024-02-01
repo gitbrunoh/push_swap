@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:21:24 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:21:26 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:19 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,17 @@ static void	swap(t_stack_node **head)
 	(*head)->previous = NULL;
 }
 
-void	sa(t_stack_node	**a, bool write_flag)
-{
-	swap(a);
-	if (!write_flag)
-		write(1, "sa\n", 3);
-}
-
 void	sb(t_stack_node **b, bool write_flag)
 {
 	swap(b);
 	if (!write_flag)
 		write(1, "sb\n", 3);
+}
+void	sa(t_stack_node	**a, bool write_flag)
+{
+	swap(a);
+	if (!write_flag)
+		write(1, "sa\n", 3);
 }
 
 void	ss(t_stack_node **a, t_stack_node **b, bool write_flag)
