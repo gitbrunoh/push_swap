@@ -96,7 +96,7 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	len_a = lenght_of_stack(*a);
 	if (len_a-- > 3 && !stack_sorted(*a))
 		pb (b, a);
-	if (len_a--  > 3 && !stack_sorted(*a))
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb (b, a);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
