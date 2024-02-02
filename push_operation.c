@@ -22,7 +22,7 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	*src = (*src)->next;
 	if (*src)
 		(*src)->previous = NULL;
-	push_node->previous = NULL; //ja n estava NULL??
+	//push_node->previous = NULL; //ja n estava NULL??
 	if (!*dst)
 	{
 		*dst = push_node;
