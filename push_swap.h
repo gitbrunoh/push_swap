@@ -55,17 +55,17 @@ void			set_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
 //Operations (subject)
-void			sa(t_stack_node **a, bool write_flag);
-void			sb(t_stack_node **b, bool write_flag);
-void			ss(t_stack_node **a, t_stack_node **b, bool write_flag);
-void			ra(t_stack_node **a, bool write_flag);
-void			rb(t_stack_node **b, bool write_flag);
-void			rr(t_stack_node **a, t_stack_node **b, bool write_flag);
-void			rra(t_stack_node **a, bool write_flag);
-void			rrb(t_stack_node **b, bool write_flag);
-void			rrr(t_stack_node **a, t_stack_node **b, bool write_flag);
-void			pa(t_stack_node **a, t_stack_node **b, bool write_flag);
-void			pb(t_stack_node **b, t_stack_node **a, bool write_flag);
+void			sa(t_stack_node **a);
+void			sb(t_stack_node **b);
+void			ss(t_stack_node **a, t_stack_node **b);
+void			ra(t_stack_node **a);
+void			rb(t_stack_node **b);
+void			rr(t_stack_node **a, t_stack_node **b);
+void			rra(t_stack_node **a);
+void			rrb(t_stack_node **b);
+void			rrr(t_stack_node **a, t_stack_node **b);
+void			pa(t_stack_node **a, t_stack_node **b);
+void			pb(t_stack_node **b, t_stack_node **a);
 
 //Sorting fts
 void			tiny_sort(t_stack_node **a);

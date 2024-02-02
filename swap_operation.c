@@ -25,24 +25,21 @@ static void	swap(t_stack_node **head)
 	(*head)->previous = NULL;
 }
 
-void	sa(t_stack_node	**a, bool write_flag)
+void	sa(t_stack_node	**a)
 {
 	swap(a);
-	if (!write_flag)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_stack_node **b, bool write_flag)
+void	sb(t_stack_node **b)
 {
 	swap(b);
-	if (!write_flag)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool write_flag)
+void	ss(t_stack_node **a, t_stack_node **b)
 {
 	swap(a);
 	swap(b);
-	if (!write_flag)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

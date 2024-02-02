@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	if (!stack_sorted(stack_a))
 	{
 		if (lenght_of_stack(stack_a) == 2)
-			sa(&stack_a, false);
+			sa(&stack_a);
 		else if (lenght_of_stack(stack_a) == 3)
 			tiny_sort(&stack_a);
 		else

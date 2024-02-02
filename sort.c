@@ -20,9 +20,9 @@ static void	rotate_both(t_stack_node **a,
 	while (*a != cheapest_node && *b != cheapest_node->target)
 	{
 		if (reverse)
-			rrr (a, b, false);
+			rrr (a, b);
 		else
-			rr (a, b, false);
+			rr (a, b);
 	}
 	set_position (*a);
 	set_position (*b);
@@ -37,16 +37,16 @@ void	prep_for_push(t_stack_node **stack,
 		if (stack_name == 'a')
 		{
 			if (top_node->over_median)
-				ra(stack, false);
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->over_median)
-				rb(stack, false);
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}
 	}
 }
@@ -75,7 +75,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rotate_both (a, b, cheapest_node, true);
 	prep_for_push (a, cheapest_node, 'a');
 	prep_for_push (b, cheapest_node->target, 'b');
-	pb (b, a, false);
+	pb (b, a);
 }
 
 static void	min_on_top(t_stack_node **a)
@@ -83,9 +83,9 @@ static void	min_on_top(t_stack_node **a)
 	while ((*a)->n != find_min(*a)->n)
 	{
 		if (find_min(*a)->over_median)
-			ra(a, false);
+			ra(a);
 		else
-			rra(a, false);
+			rra(a);
 	}
 }
 
@@ -95,9 +95,9 @@ void	sort(t_stack_node **a, t_stack_node **b)
 
 	len_a = lenght_of_stack(*a);
 	if (len_a-- > 3 && !stack_sorted(*a))
-		pb (b, a, false);
+		pb (b, a);
 	if (len_a-- > 3 && !stack_sorted(*a))
-		pb (b, a, false);
+		pb (b, a);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		handle_nodes_a (*a, *b);
@@ -108,7 +108,7 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	{
 		handle_nodes_b (*a, *b);
 		prep_for_push (a, (*b)->target, 'a');
-		pa (a, b, false);
+		pa (a, b);
 	}
 	set_position (*a);
 	min_on_top (a);
