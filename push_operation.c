@@ -14,12 +14,12 @@
 
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
-	t_stack_node	*push_node; 
+	t_stack_node	*push_node;
 
 	if (!*src)
 		return ;
 	push_node = *src;
-	*src = (*src)->next; 
+	*src = (*src)->next;
 	if (*src)
 		(*src)->previous = NULL;
 	push_node->previous = NULL; //ja n estava NULL??
