@@ -26,11 +26,10 @@ static void	rev_rotate(t_stack_node **stack)
 	last_node->next->previous = last_node;
 }
 
-void	rra(t_stack_node **a, bool write_flag)
+void	rra(t_stack_node **a)
 {
 	rev_rotate(a);
-	if (!write_flag)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack_node **b)

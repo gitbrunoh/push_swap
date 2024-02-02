@@ -36,11 +36,10 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool write_flag)
+void	pb(t_stack_node **b, t_stack_node **a)
 {
 	push(b, a);
-	if (!write_flag)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
 
 void	pa(t_stack_node **a, t_stack_node **b)
