@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-int	syntax_check(char *str_n)
+int	syntax_check(char *str)
 {
-	if (!(*str_n == '+'
-			|| *str_n == '-'
-			|| ft_isdigit(*str_n)))
+	if (!(*str == '+'
+			|| *str == '-'
+			|| ft_isdigit(*str)))
 		return (1);
-	if ((*str_n == '+'
-			|| *str_n == '-')
-		&& !(ft_isdigit(*(str_n + 1))))
+	if ((*str == '+'
+			|| *str == '-')
+		&& !(ft_isdigit(*(str + 1))))
 		return (1);
-	while (*++str_n)
+	while (*++str)
 	{
-		if (!(ft_isdigit(*str_n)))
+		if (!(ft_isdigit(*str)))
 			return (1);
 	}
 	return (0);
 }
 
-int	duplicates_check(t_stack_node *node_a, int n)
+int	duplicates_check(t_stack_node *a, int n)
 {
-	if (!node_a)
+	if (!a)
 		return (0);
-	while (node_a)
+	while (a)
 	{
-		if (node_a->n == n)
+		if (a->n == n)
 			return (1);
-		node_a = node_a->next;
+		a = a->next;
 	}
 	return (0);
 }

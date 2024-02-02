@@ -89,7 +89,7 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	set_cheapest(t_stack_node *stack)
+static void	set_cheapest(t_stack_node *stack)
 {
 	long			cheapest_cost;
 	t_stack_node	*cheapest_node;

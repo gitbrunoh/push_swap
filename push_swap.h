@@ -35,24 +35,17 @@ int				lenght_of_stack(t_stack_node *stack);
 int				max_n(int a, int b);
 int				min_n(int a, int b);
 t_stack_node	*find_last(t_stack_node *stack);
-bool			stack_sorted(t_stack_node *stack);
-t_stack_node	*find_min(t_stack_node *stack);
+bool			stack_sorted(t_stack_node *a);
+t_stack_node	*find_min(t_stack_node *a);
 t_stack_node	*find_max(t_stack_node *stack);
 
-//Errors check and stack initialization
+//Stack initialization with some errors check
 char			**ft_splitpush(char *str);
-int				syntax_check(char *str_n);
+int				syntax_check(char *str);
 int				duplicates_check(t_stack_node *a, int n);
-void			free_stack(t_stack_node **stack);
+void			free_stack(t_stack_node **a);
 void			free_errors(t_stack_node **a);
 void			init_stack_a(t_stack_node **a, char **argv);
-
-//Algorithm Core
-void			handle_nodes_a(t_stack_node *a, t_stack_node *b);
-void			handle_nodes_b(t_stack_node *a, t_stack_node *b);
-void			set_position(t_stack_node *stack);
-void			set_cheapest(t_stack_node *stack);
-void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
 //Operations (subject)
 void			sa(t_stack_node **a);
@@ -67,7 +60,10 @@ void			rrr(t_stack_node **a, t_stack_node **b);
 void			pa(t_stack_node **a, t_stack_node **b);
 void			pb(t_stack_node **b, t_stack_node **a);
 
-//Sorting fts
+//Algorithm Core
+void			set_position(t_stack_node *stack);
+void			handle_nodes_a(t_stack_node *a, t_stack_node *b);
+void			handle_nodes_b(t_stack_node *a, t_stack_node *b);
 void			tiny_sort(t_stack_node **a);
 void			sort(t_stack_node **a, t_stack_node **b);
 

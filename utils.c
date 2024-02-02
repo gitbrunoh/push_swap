@@ -36,35 +36,35 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack)
+bool	stack_sorted(t_stack_node *a)
 {
-	if (!stack)
+	if (!a)
 		return (true);
-	while (stack->next)
+	while (a->next)
 	{
-		if (stack->n > stack->next->n)
+		if (a->n > a->next->n)
 			return (false);
-		stack = stack->next;
+		a = a->next;
 	}
 	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_stack_node	*find_min(t_stack_node *a)
 {
-	long			min;
+	long			min_n;
 	t_stack_node	*min_node;
 
-	if (!stack)
+	if (!a)
 		return (NULL);
-	min = LONG_MAX;
-	while (stack)
+	min_n = LONG_MAX;
+	while (a)
 	{
-		if (stack->n < min)
+		if (a->n < min_n)
 		{
-			min = stack->n;
-			min_node = stack;
+			min_n = a->n;
+			min_node = a;
 		}
-		stack = stack->next;
+		a = a->next;
 	}
 	return (min_node);
 }

@@ -28,7 +28,7 @@ static void	rotate_both(t_stack_node **a,
 	set_position (*b);
 }
 
-void	prep_for_push(t_stack_node **stack,
+static void	moves_before_push(t_stack_node **stack,
 					t_stack_node *top_node,
 					char stack_name)
 {
@@ -73,8 +73,8 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	else if (!(cheapest_node->over_median)
 		&& !(cheapest_node->target->over_median))
 		rotate_both (a, b, cheapest_node, true);
-	prep_for_push (a, cheapest_node, 'a');
-	prep_for_push (b, cheapest_node->target, 'b');
+	moves_before_push (a, cheapest_node, 'a');
+	moves_before_push (b, cheapest_node->target, 'b');
 	pb (b, a);
 }
 
@@ -107,7 +107,7 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	while (*b)
 	{
 		handle_nodes_b (*a, *b);
-		prep_for_push (a, (*b)->target, 'a');
+		moves_before_push (a, (*b)->target, 'a');
 		pa (a, b);
 	}
 	set_position (*a);

@@ -32,12 +32,12 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-static void	append_node(t_stack_node **stack, int n)
+static void	append_node(t_stack_node **a, int n)
 {
 	t_stack_node	*new;
 	t_stack_node	*last_node;
 
-	if (!stack)
+	if (!a)
 		return ;
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
@@ -45,14 +45,14 @@ static void	append_node(t_stack_node **stack, int n)
 	new->cheapest = false;
 	new->next = NULL;
 	new->n = n;
-	if (!(*stack))
+	if (!(*a))
 	{
-		*stack = new;
+		*a = new;
 		new->previous = NULL;
 	}
 	else
 	{
-		last_node = find_last(*stack);
+		last_node = find_last(*a);
 		last_node->next = new;
 		new->previous = last_node;
 	}
