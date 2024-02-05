@@ -42,23 +42,23 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
-	long			closest_smallest;
+	long			closest_smaller;
 
 	while (a)
 	{
-		closest_smallest = LONG_MIN;
+		closest_smaller = LONG_MIN;
 		current_b = b;
 		while (current_b)
 		{
 			if (current_b->n < a->n
-				&& current_b->n > closest_smallest)
+				&& current_b->n > closest_smaller)
 			{
-				closest_smallest = current_b->n;
+				closest_smaller = current_b->n;
 				target_node = current_b;
 			}
 			current_b = current_b->next;
 		}
-		if (closest_smallest == LONG_MIN)
+		if (closest_smaller == LONG_MIN)
 			a->target = find_max(b);
 		else
 			a->target = target_node;
