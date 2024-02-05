@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:22:12 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:22:14 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:23:08 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	rotate_both(t_stack_node **a,
 	set_position (*b);
 }
 
-static void	moves_before_push(t_stack_node **stack,
+static void	bring_node_to_top(t_stack_node **stack,
 					t_stack_node *top_node,
 					char stack_name)
 {
@@ -73,8 +73,8 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	else if (!(cheapest_node->over_median)
 		&& !(cheapest_node->target->over_median))
 		rotate_both (a, b, cheapest_node, true);
-	moves_before_push (a, cheapest_node, 'a');
-	moves_before_push (b, cheapest_node->target, 'b');
+	bring_node_to_top (a, cheapest_node, 'a');
+	bring_node_to_top (b, cheapest_node->target, 'b');
 	pb (b, a);
 }
 
@@ -107,7 +107,7 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	while (*b)
 	{
 		handle_nodes_b (*a, *b);
-		moves_before_push (a, (*b)->target, 'a');
+		bring_node_to_top (a, (*b)->target, 'a');
 		pa (a, b);
 	}
 	min_on_top (a);
