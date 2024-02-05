@@ -29,7 +29,7 @@ void	set_position(t_stack_node *stack)
 	while (stack)
 	{
 		stack->position = i;
-		if (i <= median)
+		if (i < median)
 			stack->over_median = true;
 		else
 			stack->over_median = false;
