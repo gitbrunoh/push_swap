@@ -110,6 +110,6 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		moves_before_push (a, (*b)->target, 'a');
 		pa (a, b);
 	}
-	set_position (*a);
+	//set_position (*a);
 	min_on_top (a);
 }
