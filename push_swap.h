@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:16:48 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/31 15:56:25 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:42:31 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			pb(t_stack_node **b, t_stack_node **a);
 //Algorithm Core
 void			set_position(t_stack_node *stack);
 void			handle_nodes_a(t_stack_node *a, t_stack_node *b);
-void			handle_nodes_b(t_stack_node *a, t_stack_node *b);
+void			set_target_b(t_stack_node *a, t_stack_node *b);
 void			tiny_sort(t_stack_node **a);
 void			sort(t_stack_node **a, t_stack_node **b);
 

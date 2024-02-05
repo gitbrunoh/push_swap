@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:22:12 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/02/05 16:23:08 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:40:14 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,9 @@ void	sort(t_stack_node **a, t_stack_node **b)
 	tiny_sort (a);
 	while (*b)
 	{
-		handle_nodes_b (*a, *b);
+		set_position (*a);
+		set_position (*b);
+		set_target_b (*a, *b);
 		bring_node_to_top (a, (*b)->target, 'a');
 		pa (a, b);
 	}

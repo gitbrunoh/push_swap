@@ -6,13 +6,13 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:41:39 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/29 16:41:42 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:41:28 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b)
+void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
@@ -40,9 +40,9 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	handle_nodes_b(t_stack_node *a, t_stack_node *b)
+/*void	handle_nodes_b(t_stack_node *a, t_stack_node *b)
 {
 	set_position(a);
 	set_position(b);
 	set_target_b(a, b);
-}
+}*/
