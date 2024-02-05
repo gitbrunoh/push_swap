@@ -63,10 +63,10 @@ static char	**handle_token(char **out, char *str, int *i, int *k)
 {
 	int	j;
 
-	while (str[*i] == ' ')
+	while (str[*i] == ' ' || str[*i] >= 9 && str[*i] <= 13)
 		(*i)++;
 	j = *i;
-	while (str[*i] != '\0' && str[*i] != ' ')
+	while (str[*i] != '\0' && str[*i] != ' ' && !(str[*i] >= 9 && str[*i] <= 13))
 		(*i)++;
 	if (*i > j)
 	{
