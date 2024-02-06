@@ -6,34 +6,34 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:41:10 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/29 16:41:17 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:08:11 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_position(t_stack_node *stack)
+void	set_position(t_stack_node *a)
 {
 	int	i;
 	int	median;
 	int	len;
 
 	i = 0;
-	if (!stack)
+	if (!a)
 		return ;
-	len = lenght_of_stack(stack);
+	len = lenght_of_stack(a);
 	if (len % 2 != 0)
 		median = len / 2 + 1;
 	else
 		median = len / 2;
-	while (stack)
+	while (a)
 	{
-		stack->position = i;
+		a->position = i;
 		if (i < median)
-			stack->over_median = true;
+			a->over_median = true;
 		else
-			stack->over_median = false;
-		stack = stack->next;
+			a->over_median = false;
+		a = a->next;
 		++i;
 	}
 }
@@ -84,27 +84,27 @@ static void	set_cost_a(t_stack_node *a, t_stack_node *b)
 		else if (!(a->target->over_median) && !(a->over_median))
 			a->cost = max_n(len_b - pt, len_a - p);
 		else
-			a->cost = min_n(p, (len_a - p)) + min_n(pt, (len_b - pt));
+			a->cost = min_n(pt, (len_b - pt)) + min_n(p, (len_a - p));
 		a = a->next;
 	}
 }
 
-static void	set_cheapest(t_stack_node *stack)
+static void	set_cheapest(t_stack_node *a)
 {
 	long			cheapest_cost;
 	t_stack_node	*cheapest_node;
 
-	if (!stack)
+	if (!a)
 		return ;
 	cheapest_cost = LONG_MAX;
-	while (stack)
+	while (a)
 	{
-		if (stack->cost < cheapest_cost)
+		if (a->cost < cheapest_cost)
 		{
-			cheapest_cost = stack->cost;
-			cheapest_node = stack;
+			cheapest_cost = a->cost;
+			cheapest_node = a;
 		}
-		stack = stack->next;
+		a = a->next;
 	}
 	cheapest_node->cheapest = true;
 }

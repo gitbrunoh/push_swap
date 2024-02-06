@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:19:04 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/26 14:19:08 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:17:10 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ bool	stack_sorted(t_stack_node *a)
 
 t_stack_node	*find_min(t_stack_node *a)
 {
-	long			min_n;
+	long			min;
 	t_stack_node	*min_node;
 
 	if (!a)
 		return (NULL);
-	min_n = LONG_MAX;
+	min = LONG_MAX;
 	while (a)
 	{
-		if (a->n < min_n)
+		if (a->n < min)
 		{
-			min_n = a->n;
+			min = a->n;
 			min_node = a;
 		}
 		a = a->next;
