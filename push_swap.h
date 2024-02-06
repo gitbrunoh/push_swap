@@ -38,6 +38,7 @@ t_stack_node	*find_last(t_stack_node *stack);
 bool			stack_sorted(t_stack_node *a);
 t_stack_node	*find_min(t_stack_node *a);
 t_stack_node	*find_max(t_stack_node *stack);
+void			free_argv(char **argv, int mode);
 
 //Stack initialization with some errors check
 char			**ft_splitpush(char *str);
