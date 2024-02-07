@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:21:24 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/02/01 17:16:19 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:25:35 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	swap(t_stack_node **head)
 {
-	t_stack_node *temp;
+	t_stack_node	*temp;
 
 	if (!*head || !(*head)->next)
 		return ;
