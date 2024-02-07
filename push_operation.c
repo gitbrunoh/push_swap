@@ -20,9 +20,6 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 		return ;
 	push_node = *src;
 	*src = (*src)->next;
-	if (*src)
-		(*src)->previous = NULL;
-	push_node->previous = NULL;
 	if (!*dst)
 	{
 		*dst = push_node;
@@ -31,7 +28,6 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	else
 	{
 		push_node->next = *dst;
-		push_node->next->previous = push_node;
 		*dst = push_node;
 	}
 }

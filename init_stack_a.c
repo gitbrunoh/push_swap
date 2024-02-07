@@ -46,15 +46,11 @@ static void	append_node(t_stack_node **a, int n)
 	new->next = NULL;
 	new->n = n;
 	if (!(*a))
-	{
 		*a = new;
-		new->previous = NULL;
-	}
 	else
 	{
 		last_node = find_last(*a);
 		last_node->next = new;
-		new->previous = last_node;
 	}
 }
 

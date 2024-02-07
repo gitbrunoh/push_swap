@@ -14,15 +14,14 @@
 
 static void	swap(t_stack_node **head)
 {
+	t_stack_node *temp;
+
 	if (!*head || !(*head)->next)
 		return ;
-	*head = (*head)->next;
-	(*head)->previous->previous = *head;
-	(*head)->previous->next = (*head)->next;
-	if ((*head)->next)
-		(*head)->next->previous = (*head)->previous;
-	(*head)->next = (*head)->previous;
-	(*head)->previous = NULL;
+	temp = (*head)->next;
+	(*head)->next = temp->next;
+	temp->next = *head;
+	*head = temp;
 }
 
 void	sa(t_stack_node	**a)
