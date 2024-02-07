@@ -6,7 +6,7 @@
 /*   By: brunhenr <brunhenr@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:03:09 by brunhenr          #+#    #+#             */
-/*   Updated: 2024/01/29 16:03:13 by brunhenr         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:12:35 by brunhenr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ static long	ft_atol(const char *s)
 		s++;
 	}
 	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
+	{
+		result = result * 10 + (*s - '0');
+		s++;
+	}
 	return (result * sign);
 }
 

@@ -67,3 +67,20 @@ void	free_errors(t_stack_node **a)
 	write(1, "Error\n", 6);
 	exit(1);
 }
+
+void	free_argv(char **argv, int mode)
+{
+	int	i;
+
+	i = 0;
+	if (mode == 1)
+	{
+		while (argv[i])
+		{
+			free (argv[i]);
+			i++;
+		}
+		free (argv);
+	}
+	return ;
+}
